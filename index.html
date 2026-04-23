@@ -10,6 +10,7 @@
       --bg: #ffffff;
       --text: #111;
       --card: #f4f4f4;
+      --primary: #3b82f6;
     }
 
     body.dark {
@@ -18,53 +19,87 @@
       --card: #1e293b;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
 
-    .container {
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    body.dark .navbar {
+      background: rgba(15,23,42,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .nav-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--primary);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .toggle-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: none;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ===== CONTENT ===== */
+    .section {
+      padding: 100px 20px;
       text-align: center;
-      padding: 80px 20px;
       animation: fadeIn 1s ease;
     }
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-      animation: slideDown 1s ease;
-    }
-
-    p {
-      font-size: 18px;
-      opacity: 0.8;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #3b82f6;
-      color: white;
-      transition: transform 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.1);
-    }
-
     .card {
-      margin: 30px auto;
+      margin: 20px auto;
       padding: 20px;
       width: 250px;
       background: var(--card);
       border-radius: 12px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: 0.3s;
     }
 
     .card:hover {
@@ -72,33 +107,53 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
+    /* ===== ANIMATION ===== */
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
-    }
-
-    @keyframes slideDown {
-      from {transform: translateY(-30px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Xin chào 👋</h1>
-    <p>Đây là website xịn của tôi</p>
 
-    <button onclick="toggleDark()">🌙 Dark Mode</button>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">🚀 MyWeb</div>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#project">Project</a>
+    </div>
+
+    <button class="toggle-btn" onclick="toggleDark()">🌙</button>
+  </div>
+
+  <!-- HOME -->
+  <div id="home" class="section">
+    <h1>Xin chào 👋</h1>
+    <p>Website của tôi có navbar xịn 😎</p>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section">
+    <h2>About</h2>
+    <p>Tôi đang học lập trình web</p>
+  </div>
+
+  <!-- PROJECT -->
+  <div id="project" class="section">
+    <h2>Project</h2>
 
     <div class="card">
-      <h3>🚀 Project 1</h3>
-      <p>Demo hiệu ứng hover</p>
+      <h3>🔥 Project 1</h3>
+      <p>Hiệu ứng hover</p>
     </div>
 
     <div class="card">
-      <h3>🔥 Project 2</h3>
-      <p>Animation mượt mà</p>
+      <h3>⚡ Project 2</h3>
+      <p>Animation mượt</p>
     </div>
   </div>
 
@@ -107,5 +162,6 @@
       document.body.classList.toggle("dark");
     }
   </script>
+
 </body>
 </html>
