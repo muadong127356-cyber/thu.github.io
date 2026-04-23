@@ -2,10 +2,110 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Web của tôi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web xịn của tôi</title>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111;
+      --card: #f4f4f4;
+    }
+
+    body.dark {
+      --bg: #0f172a;
+      --text: #e2e8f0;
+      --card: #1e293b;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      text-align: center;
+      padding: 80px 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      animation: slideDown 1s ease;
+    }
+
+    p {
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #3b82f6;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .card {
+      margin: 30px auto;
+      padding: 20px;
+      width: 250px;
+      background: var(--card);
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideDown {
+      from {transform: translateY(-30px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Xin chào 👋</h1>
-  <p>Đây là website đầu tiên của tôi</p>
+  <div class="container">
+    <h1>Xin chào 👋</h1>
+    <p>Đây là website xịn của tôi</p>
+
+    <button onclick="toggleDark()">🌙 Dark Mode</button>
+
+    <div class="card">
+      <h3>🚀 Project 1</h3>
+      <p>Demo hiệu ứng hover</p>
+    </div>
+
+    <div class="card">
+      <h3>🔥 Project 2</h3>
+      <p>Animation mượt mà</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleDark() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
 </body>
 </html>
